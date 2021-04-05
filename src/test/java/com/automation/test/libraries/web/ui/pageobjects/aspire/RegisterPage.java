@@ -1,5 +1,6 @@
 package com.automation.test.libraries.web.ui.pageobjects.aspire;
 
+import com.automation.framework.core.datadriven.utils.GenerateDataUtils;
 import com.automation.framework.core.web.ui.object.BasePage;
 import com.automation.framework.core.web.ui.object.WebObject;
 import org.openqa.selenium.WebDriver;
@@ -27,22 +28,18 @@ public class RegisterPage extends BasePage {
   public WebObject getBtnContinue() { return findWebElement(CONTINUE_XPATH); }
 
 
-  public void typeFullName(String fullName){
-    getTxtFullName().sendKeys(fullName, false);
-  }
-  public void typeEmail(String email){
-    getTxtEmail().sendKeys(email, false);
+  public void typeRegisterInformation(String generatedFullName, String generatedEmail, String generatedPhone){
+    getTxtFullName().sendKeys(generatedFullName, false);
+    getTxtEmail().sendKeys(generatedEmail, false);
+    typePhone(generatedPhone);
+    getRadAppointedDirector().click();
+    getChkPolicyAgreement().click();
+    clickContinueBtn();
   }
   public void typePhone(String phone){
     waitForElementVisible(getImgCountry());
     getTxtPhone().sendKeys(phone, false);
 
-  }
-  public void clickAppointedDirectorRad() {
-    getRadAppointedDirector().click();
-  }
-  public void clickPolicyAgreementChk() {
-    getChkPolicyAgreement().click();
   }
   public void clickContinueBtn() {
     getBtnContinue().click();

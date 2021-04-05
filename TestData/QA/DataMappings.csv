@@ -1,2 +1,5 @@
 test_case_id,data_type,data_file_path
 VerifyRegisterSuccessfully,JSON,Register_ValidData.json
+VerifyRegisterWithInvalidPhoneOTP,JSON,Register_InValidPhoneOTP.json
+VerifyRegisterWithInvalidEmailOTP,JSON,Register_InValidEmailOTP.json
+VerifyRegisterWithInvalidBusinessRegistrationNumber,JSON,Register_InValidUEN.json

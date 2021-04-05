@@ -6,6 +6,7 @@ import com.automation.framework.core.web.ui.object.WebObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,12 +19,14 @@ public class OTPPage extends BasePage {
 
   private final String OTP_XPATH = "//div[contains(@class, 'digit-input')]//div[contains(@class, 'cursor-pointer')]";
   private final String OTP_INPUT_FORM_XPATH = "//form[contains(@class, 'verify-otp-form')]";
+  private final String OTP_MESSAGE_XPATH = "//div[contains(@class, 'aspire-label__text')]";
 
   public List<WebElement> getTxtOTPList() {
     return findAllWebElementsByLocator(Locators.Xpath, OTP_XPATH);
   }
 
   public WebObject getOPTForm() { return findWebElement(OTP_INPUT_FORM_XPATH); }
+  public WebObject getMessage() { return findWebElement(OTP_MESSAGE_XPATH); }
 
   public void typeOTP(String OTP){
     WebDriver driver = super.getWebDriver();
@@ -34,5 +37,8 @@ public class OTPPage extends BasePage {
       Actions builder = new Actions(driver);
       builder.moveToElement(OTPElements.get(i)).click().sendKeys(code.get(i)).build().perform();
     }
+  }
+  public void verifyErrorMessageDisPlayed(String message){
+    Assert.assertEquals(getMessage().getText(),message);
   }
 }

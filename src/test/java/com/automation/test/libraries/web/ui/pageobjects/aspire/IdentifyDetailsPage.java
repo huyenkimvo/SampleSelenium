@@ -18,7 +18,6 @@ public class IdentifyDetailsPage extends BasePage {
   private final String SELFIE_XPATH = "//button[.//span[contains(text(),'Take a selfie')]]//input";
   private final String IMAGE_XPATH = "//div[contains(@class, 'q-list')]";
   private final String CONTINUE_XPATH = "//button[normalize-space(.)='Continue']";
-  private final String LOADING_HIDDEN_XPATH = "//div[contains(@class,'q-loading-bar') and @aria-hidden='true']";
 
   public WebObject getBtnBeginVerification() { return findWebElement(BEGIN_VERIFICATION_XPATH); }
   public WebObject getBtnUpload() { return findWebElement(UPLOAD_KTP_XPATH); }
@@ -26,16 +25,16 @@ public class IdentifyDetailsPage extends BasePage {
   public WebObject getLblImage() { return findWebElement(IMAGE_XPATH); }
   public WebObject getBtnContinue() { return findWebElement(CONTINUE_XPATH); }
 
-  public void clickBeginVerificationButton(){
+  public void uploadIDAndSelfieImages(){
     getBtnBeginVerification().click();
+    uploadIDImage();
+    getBtnContinue().click();
+    uploadSelfieImage();
+    getBtnContinue().click();
   }
 
   public void uploadIDImage(){
     uploadFile(getBtnUpload());
-//    Path currentPath = Paths.get(System.getProperty("user.dir"));
-//    Path filePath = Paths.get(currentPath.toString(), "TestData", "IdentifyImage", "identify.png");
-//    getBtnUpload().getWebElement().sendKeys(filePath.toString());
-//    waitForElementVisible(getLblImage());
   }
 
   private void uploadFile(WebObject element){
@@ -47,14 +46,6 @@ public class IdentifyDetailsPage extends BasePage {
 
   public void uploadSelfieImage(){
     uploadFile(getBtnSelfie());
-//    Path currentPath = Paths.get(System.getProperty("user.dir"));
-//    Path filePath = Paths.get(currentPath.toString(), "TestData", "IdentifyImage", "identify.png");
-//    getBtnSelfie().getWebElement().sendKeys(filePath.toString());
-//    waitForElementVisible(getLblImage());
-  }
-
-  public void clickContinueButton(){
-    getBtnContinue().click();
   }
 
 }
