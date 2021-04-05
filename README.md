@@ -1,5 +1,6 @@
+### Selenium Java
 
-### IDE
+###### IDE
 It is recommended to edit the project by using Intellij IDE.
 
 ###### Get the chrome driver
@@ -7,5 +8,5 @@ It is recommended to edit the project by using Intellij IDE.
 * Unzip and copy the chromedriver.exe file to folder **WebDriver**
 
 ###### Run the Tests
-Run with annotation @Test at Test classes.
+Run test cases that have annotation with @Test at Test classes.
 Able to run all or each test.
